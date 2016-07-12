@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suggestotron</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <h1>Test layout_</h1>
+  <% if current_user %>
+   <%= link_to('logout', destroy_user_session_path, :method => :delete) %> |
+   <%= link_to('change password', edit_registration_path(:user)) %>
+   <% else %>
+   <%= link_to('log in', new_session_path(:user)) %> |
+   <%= link_to('sign in', new_registration_path(:user)) %>
+ <% end %>
+ <% flash.each do |name, msg| %>
+   <div><%= msg %></div>
+ <% end %>
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>
