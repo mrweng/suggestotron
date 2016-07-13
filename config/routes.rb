@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :topics do
+    member do
+      post 'downvote'
+    end
+  end
+
   root 'topics#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
